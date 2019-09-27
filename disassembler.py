@@ -143,6 +143,24 @@ class Disassembler:
                 self.arg1.append((int(instructions[i], base=2) & self.imsftMask) >> 21)
                 self.arg2.append((int(instructions[i], base=2) & self.imdataMask) >> 5)
                 self.arg3.append((int(instructions[i], base=2) & self.rdMask) >> 0)
+            elif opcode[i] == 1984:
+                self.instrSpaced.append(SetUp.bin2StringSpacedD(instructions[i]))
+                self.opcodeStr.append("STUR")
+                self.arg1.append((int(instructions[i], base=2) & self.addrMask) >> 12)
+                self.arg2.append((int(instructions[i], base=2) & self.rnMask) >> 5)
+                self.arg3.append((int(instructions[i], base=2) & self.rdMask) >> 0)
+                self.arg1Str.append("\tR" + str(self.arg3[i]))
+                self.arg2Str.append(", [" + str(self.arg2[i]))
+                self.arg3Str.append(", #" + str(self.arg1[i]) + "]")
+            elif opcode[i] == 1986:
+                self.instrSpaced.append(SetUp.bin2StringSpacedD(instructions[i]))
+                self.opcodeStr.append("LDUR")
+                self.arg1.append((int(instructions[i], base=2) & self.addrMask) >> 12)
+                self.arg2.append((int(instructions[i], base=2) & self.rnMask) >> 5)
+                self.arg3.append((int(instructions[i], base=2) & self.rdMask) >> 0)
+                self.arg1Str.append("\tR" + str(self.arg3[i]))
+                self.arg2Str.append(", [" + str(self.arg2[i]))
+                self.arg3Str.append(", #" + str(self.arg1[i]) + "]")
 
 
 
