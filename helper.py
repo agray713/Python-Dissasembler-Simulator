@@ -52,11 +52,11 @@ class SetUp:
         else:
             print ("You ARE USING AN INVALID BIT LENGTH")
 
-         if (negBitMask & num) > 0: # is it?
-            #num = num | extendMask # if so extend with 1's
-            #num = num ^ 0xFFFFFFFF # 2s comp
-            #num = num + 1
-            #num = num * -1 # add neg sign
+        if (negBitMask & num) > 0: # is it?
+            num = num | extendMask # if so extend with 1's
+            num = num ^ 0xFFFFFFFF # 2s comp
+            num = num + 1
+            num = num * -1 # add neg sign
             num = SetUp.imm_32_bit_unsigned_to_32_bit_signed_converter(num);
 
         return num
