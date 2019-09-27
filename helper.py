@@ -46,17 +46,23 @@ class SetUp:
         if bitsize == 12:
             negBitMask = 0x800 # figure out if 12 bit num is neg
             extendMask = 0xFFFFF000
-
-            ......... stuff here ..............
-
+        elif bitsize == 9:
+            negBitMask = 0x100
+            extendMask = 0xFFFFFE00
+        elif bitsize == 19:
+            negBitMask = 0x40000
+            extendMask = 0xFFF80000
+        elif bitsize == 16:
+            negBitMask = 0x8000
+            extendMask = 0xFFFF0000
         else:
             print ("You ARE USING AN INVALID BIT LENGTH")
 
         if (negBitMask & num) > 0: # is it?
             num = num | extendMask # if so extend with 1's
-            num = num ^ 0xFFFFFFFF # 2s comp
-            num = num + 1
-            num = num * -1 # add neg sign
+            #num = num ^ 0xFFFFFFFF # 2s comp
+            #num = num + 1
+            #num = num * -1 # add neg sign
             num = SetUp.imm_32_bit_unsigned_to_32_bit_signed_converter(num);
 
         return num
