@@ -27,17 +27,16 @@ class Disassembler:
 
         print("raw output filename is ", outputFilename)
 
+
         for i in range(len(instructions)):
             self.address.append(96 + (i * 4))
-
         opcode = []
 
         for z in instructions:
             opcode.append(int(z, base=2) >> 21)
 
-        for i in range(len(opcode)):
-            self.numInstructs = self.numInstructs + 1
-            if opcode[1] == 1112:
+            if opcode[1] == 1112:  for i in range(len(opcode)):
+            self.numInstructs = self.numInstructs +
                 self.instrSpaced.append(SetUp.bin2StringSpacedR(instructions[i]))
                 self.opcodeStr.append("ADD")
                 self.arg1.append((int(instructions[i], base=2) & self.rnMask) >> 5)
