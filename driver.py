@@ -1,5 +1,5 @@
 import sys
-import helper
+from helper import Setup
 import disassembler
 import os
 
