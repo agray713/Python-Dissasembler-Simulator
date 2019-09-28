@@ -116,7 +116,7 @@ class SetUp:
         """This function converts decimal number to binary and prints it"""
         if num > 1:
             cls.decimalToBinary(num // 2)
-        print(num % 2, end='')
+        print(num % 2)#, end='')
 
     @classmethod
     def binaryToDecimal(cls,binary):
