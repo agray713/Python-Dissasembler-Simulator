@@ -69,7 +69,6 @@ class SetUp:
 
 
     @classmethod
-    """ This is a generic spaced string for an example """
     def bin2StringSpaced(cls,s):
         spacedStr = s[0:8] + " " + s[8:11] + " " + s[11:16] + " " + s[16:21] + " " + s[21:26] + " " + s[26:32]
         return spacedStr
