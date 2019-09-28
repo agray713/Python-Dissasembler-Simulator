@@ -1,6 +1,8 @@
 import sys
-import helper
+from helper import Setup
 import disassembler
 import os
 
-helper.get_input_filename()
+inputFilename = Setup.get_inputFilename()
+
+print(inputFilename)
