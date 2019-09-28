@@ -1,8 +1,6 @@
 import sys
-from helper import Setup
-import disassembler
+from disassembler import Disassembler
 import os
 
-inputFilename = Setup.get_inputFilename()
-
-print(inputFilename)
+temp = Disassembler()
+temp.run()
