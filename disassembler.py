@@ -235,6 +235,5 @@ class Disassembler:
         for i in range(len(self.instrSpaced)):
             print(str(self.instrSpaced[i]) +"\t" + str(self.address[i]) + "\t" +  str(self.opcodeStr[i]) + str("\t" + self.arg1Str[i]) + str(self.arg2Str[i]) + str(self.arg3Str[i]) + "\n" , outputFilename)
 
-        print("end")
 
 
