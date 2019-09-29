@@ -27,17 +27,17 @@ class SetUp:
 
     @classmethod
     def import_data_file(cls):
-         """ gets file name from the command line and then downloads the input file and :returns the list"""
-         for i in range(len(sys.argv)):
+        """ gets file name from the command line and then downloads the input file and :returns the list"""
+        for i in range(len(sys.argv)):
             if sys.argv[i] == '-i' and i < (len(sys.argv) - 1):
                 inputFileName = sys.argv[i +1]
 
-         try:
+        try:
             instructions = [line.rstrip() for line in open(inputFileName, 'r')]
-         except IOError:
+        except IOError:
             print("Could not open input file, is path correct?")
 
-            return instructions
+        return instructions
 
     @classmethod
     def imm_bit_to_32_bit_converter(cls, num, bitsize):
@@ -55,6 +55,12 @@ class SetUp:
         elif bitsize == 16:
             negBitMask = 0x8000
             extendMask = 0xFFFF0000
+        elif bitsize == 26:
+            negBitMask = 0x2000000
+            extendMask = 0xFC000000
+        elif bitsize == 32:
+            negBitMask = 0x80000000
+            extendMask = 0x0
         else:
             print ("You ARE USING AN INVALID BIT LENGTH")
 
@@ -62,7 +68,7 @@ class SetUp:
             num = num | extendMask # if so extend with 1's
             #num = num ^ 0xFFFFFFFF # 2s comp
             #num = num + 1
-            #num = num * -1 # add neg sign
+            num = num * -1 # add neg sign
             num = SetUp.imm_32_bit_unsigned_to_32_bit_signed_converter(num);
 
         return num
@@ -75,32 +81,32 @@ class SetUp:
 
     @classmethod
     def bin2StringSpacedD(cls,s):
-        spacedStr = s[0:11] + " " + s[11:20] + " " + s[20:22] + s[22:27] + " " + s[27:32]
+        spacedStr = s[0:11] + " " + s[11:20] + " " + s[20:22] + " " + s[22:27] + " " + s[27:32] + " "
         return spacedStr
 
     @classmethod
     def bin2StringSpacedIM(cls,s):
-        spacedStr = s[0:9] + " " + s[9:11] + s[11:27] + " " + s[27:32]
+        spacedStr = s[0:9] + " " + s[9:11] + " " + s[11:27] + " " + s[27:32] + "  "
         return spacedStr
 
     @classmethod
     def bin2StringSpacedCB(cls,s):
-        spacedStr = s[0:8] + " " + s[8:27] + " " + s[27:32]
+        spacedStr = s[0:8] + " " + s[8:27] + " " + s[27:32] + "   "
         return spacedStr
 
     @classmethod
     def bin2StringSpacedI(csl,s):
-        spacedStr = s[0:11] + " " + s[11:22] + " " + s[22:27] + " " + s[27:32]
+        spacedStr = s[0:10] + " " + s[10:22] + " " + s[22:27] + " " + s[27:32] + "  "
         return spacedStr
 
     @classmethod
     def bin2StringSpacedR(cls,s):
-        spacedStr = s[0:11] + " " + s[11:16] + s[16:22] + " " + s[22:27] + " " + s[27:32]
+        spacedStr = s[0:11] + " " + s[11:16] + " " + s[16:22] + " " + s[22:27] + " " + s[27:32] + " "
         return spacedStr
 
     @classmethod
     def bin2StringSpacedB(cls,s):
-        spacedStr = s[0:6] + " " + s[6:32]
+        spacedStr = s[0:6] + " " + s[6:32] + "    "
         return spacedStr
 
     @classmethod
