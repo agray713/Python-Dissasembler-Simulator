@@ -125,7 +125,7 @@ class Disassembler:
                 self.arg1.append((int(instructions[i], base =2 ) & MASKs.imMask) >> 10)
                 self.arg2.append((int(instructions[i], base = 2) & MASKs.rnMask) >> 5)
                 self.arg3.append((int(instructions[i], base =2 ) & MASKs.rdMask) >> 0)
-                self.arg1Str.append("R" + str(self.arg3[i]))
+                self.arg1Str.append("\tR" + str(self.arg3[i]))
                 self.arg2Str.append(", R" + str(self.arg2[i]))
                 self.arg3Str.append(", #" + str(self.arg1[i]))
             elif opcode[i] == 1672 or opcode[i] == 1673:
@@ -134,13 +134,14 @@ class Disassembler:
                 self.arg1.append((int(instructions[i], base =2 ) & MASKs.imMask) >> 10)
                 self.arg2.append((int(instructions[i], base = 2) & MASKs.rnMask) >> 5)
                 self.arg3.append((int(instructions[i], base =2 ) & MASKs.rdMask) >> 0)
-                self.arg1Str.append("R" + str(self.arg3[i]))
+                self.arg1Str.append("\tR" + str(self.arg3[i]))
                 self.arg2Str.append(", R" + str(self.arg2[i]))
                 self.arg3Str.append(", #" + str(self.arg1[i]))
             elif opcode[i] >= 1440 and opcode[i] <= 1447:
                 self.instrSpaced.append(SetUp.bin2StringSpacedCB(instructions[i]))
                 self.opcodeStr.append("CBZ")
-                self.arg1.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i], base = 2) & MASKs.addr2Mask) >> 5, 19))
+                self.arg1.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i], base = 2) & MASKs.addr2Mask) >>
+                                                                   5, 19))
                 self.arg2.append((int(instructions[i], base = 2) & MASKs.rdMask) >> 0)
                 self.arg3.append(0)
                 self.arg1Str.append("\tR" + str(self.arg2[i]))
@@ -149,10 +150,11 @@ class Disassembler:
             elif opcode[i] >= 1448 and opcode[i] <= 1455:
                 self.instrSpaced.append(SetUp.bin2StringSpacedCB(instructions[i]))
                 self.opcodeStr.append("CBNZ")
-                self.arg1.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i], base = 2) & MASKs.addr2Mask) >> 5, 19))
+                self.arg1.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i], base = 2) & MASKs.addr2Mask) >>
+                                                                   5, 19))
                 self.arg2.append((int(instructions[i], base = 2) & MASKs.rdMask) >> 0)
                 self.arg3.append(0)
-                self.arg1Str.append("R" + str(self.arg2[i]))
+                self.arg1Str.append("\tR" + str(self.arg2[i]))
                 self.arg2Str.append(", #" + str(self.arg1[i]))
                 self.arg3Str.append("")
             elif opcode[i] >= 1684 and opcode[i] <= 1687:
@@ -161,7 +163,7 @@ class Disassembler:
                 self.arg1.append((int(instructions[i], base = 2) & MASKs.imsftMask) >> 21)
                 self.arg2.append((int(instructions[i], base = 2) & MASKs.imdataMask) >> 5)
                 self.arg3.append((int(instructions[i], base = 2) & MASKs.rdMask) >> 0)
-                self.arg1Str.append("R" + str(self.arg3[i]))
+                self.arg1Str.append("\tR" + str(self.arg3[i]))
                 self.arg2Str.append(", " + str(self.arg2[i]))
                 self.arg3Str.append(", LSL " + str(self.arg1[i] * 16))
             elif opcode[i] >= 1940 and opcode[i] <= 1943:
@@ -170,7 +172,7 @@ class Disassembler:
                 self.arg1.append((int(instructions[i], base = 2) & MASKs.imsftMask) >> 21)
                 self.arg2.append((int(instructions[i], base = 2) & MASKs.imdataMask) >> 5)
                 self.arg3.append((int(instructions[i], base = 2) & MASKs.rdMask) >> 0)
-                self.arg1Str.append("R" + str(self.arg3[i]))
+                self.arg1Str.append("\tR" + str(self.arg3[i]))
                 self.arg2Str.append(", " + str(self.arg2[i]))
                 self.arg3Str.append(", LSL " + str(self.arg1[i] * 16))
             elif opcode[i] == 1984:
@@ -179,7 +181,7 @@ class Disassembler:
                 self.arg1.append((int(instructions[i], base = 2) & MASKs.addrMask) >> 12)
                 self.arg2.append((int(instructions[i], base = 2) & MASKs.rnMask) >> 5)
                 self.arg3.append((int(instructions[i], base = 2) & MASKs.rdMask) >> 0)
-                self.arg1Str.append("R" + str(self.arg3[i]))
+                self.arg1Str.append("\tR" + str(self.arg3[i]))
                 self.arg2Str.append(", [" + str(self.arg2[i]))
                 self.arg3Str.append(", #" + str(self.arg1[i]) + "]")
             elif opcode[i] == 1986:
@@ -188,7 +190,7 @@ class Disassembler:
                 self.arg1.append((int(instructions[i], base = 2) & MASKs.addrMask) >> 12)
                 self.arg2.append((int(instructions[i], base = 2) & MASKs.rnMask) >> 5)
                 self.arg3.append((int(instructions[i], base = 2) & MASKs.rdMask) >> 0)
-                self.arg1Str.append("R" + str(self.arg3[i]))
+                self.arg1Str.append("\tR" + str(self.arg3[i]))
                 self.arg2Str.append(", [" + str(self.arg2[i]))
                 self.arg3Str.append(", #" + str(self.arg1[i]) + "]")
             elif opcode[i] == 0:
@@ -224,7 +226,8 @@ class Disassembler:
 
         for i in range(len(instructions) - self.numInstructs):
             self.instrSpaced.append(instructions[i + self.numInstructs] + "     ")
-            self.opcodeStr.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i + self.numInstructs], base=2)), 32))
+            self.opcodeStr.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i + self.numInstructs], base=2)),
+                                                                    32))
             self.arg1.append(0)
             self.arg2.append(0)
             self.arg3.append(0)
@@ -232,8 +235,12 @@ class Disassembler:
             self.arg2Str.append("")
             self.arg3Str.append("")
 
-        for i in range(len(self.instrSpaced)):
-            print(str(self.instrSpaced[i]) +"\t" + str(self.address[i]) + "\t" +  str(self.opcodeStr[i]) + str("\t" + self.arg1Str[i]) + str(self.arg2Str[i]) + str(self.arg3Str[i]) + "\n" , outputFilename)
+        fileStr = outputFilename + ".txt"
+        file = open(fileStr, "w+")
 
+        for i in range(len(opcode)):
+            file.write("%-37s \t %-3s \t %-5s %-s %-s %-s" % (
+            self.instrSpaced[i], self.address[i], self.opcodeStr[i], self.arg1Str[i], self.arg2Str[i], self.arg3Str[i]))
+            file.write("\n")
 
 
