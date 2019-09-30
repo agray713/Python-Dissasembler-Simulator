@@ -235,12 +235,19 @@ class Disassembler:
             self.arg2Str.append("")
             self.arg3Str.append("")
 
-        fileStr = outputFilename + ".txt"
-        file = open(fileStr, "w+")
 
-        for i in range(len(opcode)):
+
+        """for i in range(len(opcode)):
             file.write("%-37s \t %-3s \t %-5s %-s %-s %-s" % (
             self.instrSpaced[i], self.address[i], self.opcodeStr[i], self.arg1Str[i], self.arg2Str[i], self.arg3Str[i]))
-            file.write("\n")
+            file.write("\n")"""
 
+    def printData(self):
+        fileStr = SetUp.get_output_filename() + ".txt"
+        file = open(fileStr, "w+")
+
+        for i in range(len(self.opcodeStr)):
+            file.write("%-37s \t %-3s \t %-5s %-s %-s %-s" % (self.instrSpaced[i], self.address[i], self.opcodeStr[i],
+                                                              self.arg1Str[i], self.arg2Str[i], self.arg3Str[i]))
+            file.write("\n")
 
