@@ -225,22 +225,19 @@ class Disassembler:
                 sys.exit("You have found an unknown instruction, investigate NOW")
 
         for i in range(len(instructions) - self.numInstructs):
-            self.instrSpaced.append(instructions[i + self.numInstructs] + "     ")
-            self.opcodeStr.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i + self.numInstructs], base=2)),
-                                                                    32))
-            self.arg1.append(0)
-            self.arg2.append(0)
-            self.arg3.append(0)
-            self.arg1Str.append("")
-            self.arg2Str.append("")
-            self.arg3Str.append("")
+            self.rawdata.append(instructions[i + self.numInstructs] + "     ")
+            self.dataval.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i + self.numInstructs], base=2)),
 
-    def printData(self):
-        fileStr = SetUp.get_output_filename() + ".txt"
-        file = open(fileStr, "w+")
 
-        for i in range(len(self.opcodeStr)):
-            file.write("%-37s \t %-3s \t %-5s %-s %-s %-s" % (self.instrSpaced[i], self.address[i], self.opcodeStr[i],
-                                                              self.arg1Str[i], self.arg2Str[i], self.arg3Str[i]))
-            file.write("\n")
+    def print(self):
+        outFile = open(SetUp.get_output_filename() + "dis.txt", w)
+
+        for i in range(self.numInstructs):
+            outFile.write(str(self.instrSpaced[i]) + '\t' + str(self.address[i]) + '\t' + str(self.opcodeStr[i]) +
+                          str(self.arg1Str[i]) + str(self.arg2Str[i]) + str(self.arg3Str[i]))
+
+        for i in range(len(self.dataval)):
+            outFile.write(self.rawdata[i] + self.dataval[i])
+
+        outFile.close()
 
