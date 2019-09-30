@@ -230,7 +230,7 @@ class Disassembler:
 
 
     def print(self):
-        outFile = open(SetUp.get_output_filename() + "dis.txt", w)
+        outFile = open(SetUp.get_output_filename() + "_dis.txt", w)
 
         for i in range(self.numInstructs):
             outFile.write(str(self.instrSpaced[i]) + '\t' + str(self.address[i]) + '\t' + str(self.opcodeStr[i]) +
