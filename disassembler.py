@@ -226,18 +226,18 @@ class Disassembler:
 
         for i in range(len(instructions) - self.numInstructs):
             self.rawdata.append(instructions[i + self.numInstructs] + "     ")
-            self.dataval.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i + self.numInstructs], base=2)),
-
+            self.dataval.append(SetUp.imm_bit_to_32_bit_converter((int(instructions[i + self.numInstructs], base=2)),32))
 
     def print(self):
-        outFile = open(SetUp.get_output_filename() + "_dis.txt", w)
+        outFile = open(SetUp.get_output_filename() + "_dis.txt", 'w')
 
         for i in range(self.numInstructs):
             outFile.write(str(self.instrSpaced[i]) + '\t' + str(self.address[i]) + '\t' + str(self.opcodeStr[i]) +
-                          str(self.arg1Str[i]) + str(self.arg2Str[i]) + str(self.arg3Str[i]))
+                          str(self.arg1Str[i]) + str(self.arg2Str[i]) + str(self.arg3Str[i]) + '\n')
 
         for i in range(len(self.dataval)):
-            outFile.write(self.rawdata[i] + self.dataval[i])
+            outFile.write(str(self.rawdata[i]) + '\t' + str(self.address[i + self.numInstructs]) + '\t' +
+                          str(self.dataval[i]) + '\n')
 
         outFile.close()
 
