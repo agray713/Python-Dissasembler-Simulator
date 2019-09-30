@@ -4,5 +4,5 @@ import os
 
 disassembler = Disassembler()
 disassembler.run()
-disassembler.printData()
+disassembler.print()
 
